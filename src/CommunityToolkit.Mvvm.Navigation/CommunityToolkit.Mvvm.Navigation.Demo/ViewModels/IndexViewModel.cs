@@ -5,7 +5,7 @@ using System.Windows;
 
 namespace CommunityToolkit.Mvvm.Navigation.Demo.ViewModels
 {
-    public class IndexViewModel : ObservableObject, INavigationAware, IJournalAware
+    public class IndexViewModel : ViewModelBase, INavigationAware, IJournalAware
     {
         INavigationService Navigation;
         public IndexViewModel(INavigationService navigation)

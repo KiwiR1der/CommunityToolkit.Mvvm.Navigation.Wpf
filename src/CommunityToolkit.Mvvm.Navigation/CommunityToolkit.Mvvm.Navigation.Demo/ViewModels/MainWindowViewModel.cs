@@ -1,9 +1,8 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Navigation.Wpf;
 namespace CommunityToolkit.Mvvm.Navigation.Demo.ViewModels
 {
-    public class MainWindowViewModel : ObservableObject
+    public class MainWindowViewModel : ViewModelBase
     {
         INavigationService Navigation;
         public MainWindowViewModel(INavigationService navigation)

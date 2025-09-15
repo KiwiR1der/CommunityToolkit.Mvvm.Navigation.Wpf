@@ -4,7 +4,7 @@ using System.Windows;
 
 namespace CommunityToolkit.Mvvm.Navigation.Demo.ViewModels
 {
-    public class HomeViewModel : ObservableObject, INavigationAware, IJournalAware
+    public class HomeViewModel : ViewModelBase, INavigationAware, IJournalAware
     {
         private string _Title;
         public string Title

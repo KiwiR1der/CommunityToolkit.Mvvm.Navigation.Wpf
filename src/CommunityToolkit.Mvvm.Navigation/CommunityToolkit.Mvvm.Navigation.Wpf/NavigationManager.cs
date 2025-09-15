@@ -13,19 +13,23 @@ namespace CommunityToolkit.Mvvm.Navigation.Wpf
         /// 注册视图
         /// </summary>
         internal readonly ConcurrentDictionary<string, Type> views = new ConcurrentDictionary<string, Type>();
+
         /// <summary>
         /// 导航区域
         /// </summary>
         internal readonly ConcurrentDictionary<string, object> navigations = new ConcurrentDictionary<string, object>();
+
         /// <summary>
         /// 导航历史记录
         /// </summary>
         internal readonly ConcurrentDictionary<string, List<object>> navigationHistory = new ConcurrentDictionary<string, List<object>>();
+
         /// <summary>
         /// 导航索引
         /// </summary>
         internal readonly ConcurrentDictionary<string, int> navigationHistoryIndex = new ConcurrentDictionary<string, int>();
-        private static NavigationManager _Manager;
+       
+        private static NavigationManager _Manager;  // 单例
         public static NavigationManager Manager
         {
             get
@@ -34,6 +38,7 @@ namespace CommunityToolkit.Mvvm.Navigation.Wpf
                 return _Manager;
             }
         }
+
         public static string GetRegionName(DependencyObject obj)
         {
             return (string)obj.GetValue(RegionNameProperty);
@@ -44,7 +49,11 @@ namespace CommunityToolkit.Mvvm.Navigation.Wpf
             obj.SetValue(RegionNameProperty, value);
         }
 
-        // Using a DependencyProperty as the backing store for RegionName.  This enables animation, styling, binding, etc...
+        /// <summary>
+        /// Using a DependencyProperty as the backing store for RegionName.  This enables animation, styling, binding, etc...
+        /// 附加依赖属性 RegionName - 把某个 ContentControl 注册为导航区域
+        /// </summary>
+
         public static readonly DependencyProperty RegionNameProperty =
             DependencyProperty.RegisterAttached("RegionName", typeof(string), typeof(NavigationManager), new PropertyMetadata(OnRegionNameChanged));
 
@@ -54,6 +63,7 @@ namespace CommunityToolkit.Mvvm.Navigation.Wpf
             if (Manager.views.Any(o => o.Key == GetRegionName(d))) throw new Exception($"重复注册导航区域名称：{GetRegionName(d)}");
             Manager.navigations.TryAdd(GetRegionName(d), d);
         }
+
         /// <summary>
         /// 移除注册区域
         /// </summary>

@@ -7,10 +7,16 @@ using System.Text;
 
 namespace CommunityToolkit.Mvvm.Navigation.Wpf
 {
+    /// <summary>
+    /// 参数包（字典语义 + 查询串解析）
+    /// 支持 Add/TryGetValue/GetValues/GetValue<T>/ToString()；
+    /// </summary>
     public class NavigationParameters : IEnumerable<KeyValuePair<string, object>>
     {
         private readonly List<KeyValuePair<string, object>> _entries = new List<KeyValuePair<string, object>>(); 
+
         public int Count => _entries.Count; 
+
         public IEnumerable<string> Keys => _entries.Select((KeyValuePair<string, object> x) => x.Key); 
         public object this[string key]
         {
